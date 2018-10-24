@@ -2,11 +2,11 @@
   "name": "recorderjs",
   "version": "0.1.0",
   "description": "A plugin for recording/exporting the output of Web Audio API nodes",
-  "main": "lib/index.js",
+  "main": "build/index.js",
   "scripts": {
-    "build": "npm run build:lib && npm run build:browserify",
-    "build:lib": "babel src/ -d lib/",
-    "build:browserify": "browserify lib/index.js -t babelify --outfile dist/recorder.js -s Recorder",
+    "build": "babel src/ -d build/",
+    "dist": "npm run build && mkdir -p dist && browserify build/index.js -t babelify --outfile dist/recorder.js -s Recorder",
+    "prepublish": "npm run dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
